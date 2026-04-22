@@ -61,6 +61,12 @@
             .scroll-reveal.active { opacity: 1; transform: translateY(0); }
             .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
             .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px -10px rgba(200, 16, 46, 0.2); }
+            /* 非遗图片自适应裁剪，保持图片完整、不变形、居中显示 */
+            .product-img {
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -168,7 +174,7 @@
         </div>
     </section>
 
-    <!-- ========== 文创产品商城 Section（含支付功能） ========== -->
+    <!-- ========== 文创产品商城 Section（仅保留2个商品） ========== -->
     <section id="products" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -177,53 +183,37 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">每一件作品都承载着瑶绣与女书的千年技艺，支持环保材料与3D打印智造。</p>
             </div>
 
-            <!-- 产品卡片网格 -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- 产品1：瑶绣书签 -->
+            <!-- 产品卡片网格 双列布局 -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- 产品1：圆形瑶绣纹样图 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div class="h-56 bg-gradient-to-br from-yao-red/20 to-eco-gold/20 flex items-center justify-center">
-                        <span class="text-5xl">🧵📖</span>
+                        <img src="./imgs/yao-round-pattern.jpg" alt="圆形瑶绣纹样图" class="product-img">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-shu-black mb-2">瑶绣·凤穿牡丹书签</h3>
-                        <p class="text-gray-500 text-sm mb-4">3D打印环保PLA材质，镶嵌瑶绣经典纹样</p>
+                        <h3 class="text-xl font-bold text-shu-black mb-2">圆形瑶绣纹样书签</h3>
+                        <p class="text-gray-500 text-sm mb-4">3D打印环保PLA材质，镶嵌瑶绣经典圆形纹样</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-yao-red">¥68</span>
+                            <span class="text-2xl font-bold text-yao-red">¥6.80</span>
                             <span class="text-sm text-gray-400">限量 200 件</span>
                         </div>
-                        <button data-product="yao-bookmark" data-price="68" data-name="瑶绣·凤穿牡丹书签" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
+                        <button data-product="yao-bookmark" data-price="68" data-name="圆形瑶绣纹样书签" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
                     </div>
                 </div>
 
-                <!-- 产品2：女书手链 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
-                    <div class="h-56 bg-gradient-to-br from-shu-black/10 to-yao-red/10 flex items-center justify-center">
-                        <span class="text-5xl">📜💎</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-shu-black mb-2">女书·福字银手链</h3>
-                        <p class="text-gray-500 text-sm mb-4">925银镀白金，女书"福"字刻印</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-yao-red">¥168</span>
-                            <span class="text-sm text-gray-400">限量 100 件</span>
-                        </div>
-                        <button data-product="nvshu-bracelet" data-price="168" data-name="女书·福字银手链" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
-                    </div>
-                </div>
-
-                <!-- 产品3：融合设计摆件 -->
+                <!-- 产品2：竖版蝴蝶女书刺绣图 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div class="h-56 bg-gradient-to-br from-eco-gold/20 to-yao-red/10 flex items-center justify-center">
-                        <span class="text-5xl">🎨🏺</span>
+                        <img src="./imgs/nvshu-butterfly.jpg" alt="竖版蝴蝶女书刺绣图" class="product-img">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-shu-black mb-2">瑶绣×女书·融合摆件</h3>
-                        <p class="text-gray-500 text-sm mb-4">瑶绣纹样与女书字符的3D打印立体雕塑</p>
+                        <h3 class="text-xl font-bold text-shu-black mb-2">竖版蝴蝶女书刺绣摆件</h3>
+                        <p class="text-gray-500 text-sm mb-4">融合女书字符与蝴蝶纹样，3D打印立体文创藏品</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-yao-red">¥298</span>
+                            <span class="text-2xl font-bold text-yao-red">¥29.80</span>
                             <span class="text-sm text-gray-400">限量 50 件</span>
                         </div>
-                        <button data-product="fusion-sculpture" data-price="298" data-name="瑶绣×女书·融合摆件" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
+                        <button data-product="fusion-sculpture" data-price="298" data-name="竖版蝴蝶女书刺绣摆件" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
                     </div>
                 </div>
             </div>
