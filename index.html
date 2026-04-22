@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>瑶绣潇湘 - 新生代非遗数字文创品牌</title>
+    <title>瑶绣潇湘 · 盘瓠新绣征文</title>
     <meta name="description" content="以瑶绣与女书为核心，环保材料与3D打印智造的新生代非遗数字文创品牌。">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,12 @@
     <script src="https://js.stripe.com/v3/"></script>
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- 自定义 Tailwind 配置 -->
+    <style>
+        /* 自定义平滑滚动与基础样式 */
+        html { scroll-behavior: smooth; }
+        .hidden-content { display: none !important; }
+        .show-content { display: block !important; }
+    </style>
     <script>
         tailwind.config = {
             theme: { 
@@ -61,7 +66,6 @@
             .scroll-reveal.active { opacity: 1; transform: translateY(0); }
             .card-hover { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
             .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px -10px rgba(200, 16, 46, 0.2); }
-            /* 非遗图片自适应裁剪，保持图片完整、不变形、居中显示 */
             .product-img {
                 object-fit: contain;
                 width: 100%;
@@ -86,6 +90,7 @@
                     <a href="#heritage" class="text-shu-black hover:text-yao-red font-medium">非遗简介</a>
                     <a href="#products" class="text-shu-black hover:text-yao-red font-medium">文创产品</a>
                     <a href="#innovation" class="text-shu-black hover:text-yao-red font-medium">创新优势</a>
+                    <a href="#story" class="text-shu-black hover:text-yao-red font-medium">征文</a>
                     <a href="#contact" class="bg-yao-red text-white px-6 py-2 rounded-full hover:bg-red-700 transition">联系我们</a>
                 </div>
                 <div class="md:hidden">
@@ -103,6 +108,7 @@
                 <a href="#heritage" class="block px-3 py-2 rounded-md">非遗简介</a>
                 <a href="#products" class="block px-3 py-2 rounded-md">文创产品</a>
                 <a href="#innovation" class="block px-3 py-2 rounded-md">创新优势</a>
+                <a href="#story" class="block px-3 py-2 rounded-md">征文</a>
                 <a href="#contact" class="block px-3 py-2 rounded-md text-yao-red font-bold">联系我们</a>
             </div>
         </div>
@@ -174,7 +180,7 @@
         </div>
     </section>
 
-    <!-- ========== 文创产品商城 Section（仅保留2个商品） ========== -->
+    <!-- 文创产品商城 -->
     <section id="products" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -182,43 +188,38 @@
                 <div class="w-20 h-1 bg-yao-red mx-auto mb-6"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">每一件作品都承载着瑶绣与女书的千年技艺，支持环保材料与3D打印智造。</p>
             </div>
-
-            <!-- 产品卡片网格 双列布局 -->
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- 产品1：圆形瑶绣纹样图 -->
+                <!-- 产品1：耳钉 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div class="h-56 bg-gradient-to-br from-yao-red/20 to-eco-gold/20 flex items-center justify-center">
-                        <img src="./imgs/yao-round-pattern.jpg" alt="圆形瑶绣纹样图" class="product-img">
+                        <img src="./imgs/yao-round-pattern.jpg" alt="耳钉" class="product-img">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-shu-black mb-2">圆形瑶绣纹样书签</h3>
+                        <h3 class="text-xl font-bold text-shu-black mb-2">耳钉</h3>
                         <p class="text-gray-500 text-sm mb-4">3D打印环保PLA材质，镶嵌瑶绣经典圆形纹样</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-yao-red">¥6.80</span>
+                            <span class="text-2xl font-bold text-yao-red">$22.00</span>
                             <span class="text-sm text-gray-400">限量 200 件</span>
                         </div>
-                        <button data-product="yao-bookmark" data-price="68" data-name="圆形瑶绣纹样书签" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
+                        <button data-product="yao-earring" data-price="22" data-name="瑶绣纹样耳钉" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
                     </div>
                 </div>
-
-                <!-- 产品2：竖版蝴蝶女书刺绣图 -->
+                <!-- 产品2：才识书签 -->
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
                     <div class="h-56 bg-gradient-to-br from-eco-gold/20 to-yao-red/10 flex items-center justify-center">
-                        <img src="./imgs/nvshu-butterfly.jpg" alt="竖版蝴蝶女书刺绣图" class="product-img">
+                        <img src="./imgs/nvshu-butterfly.jpg" alt="才识书签" class="product-img">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-shu-black mb-2">竖版蝴蝶女书刺绣摆件</h3>
+                        <h3 class="text-xl font-bold text-shu-black mb-2">才识书签</h3>
                         <p class="text-gray-500 text-sm mb-4">融合女书字符与蝴蝶纹样，3D打印立体文创藏品</p>
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-yao-red">¥29.80</span>
+                            <span class="text-2xl font-bold text-yao-red">$4.99</span>
                             <span class="text-sm text-gray-400">限量 50 件</span>
                         </div>
-                        <button data-product="fusion-sculpture" data-price="298" data-name="竖版蝴蝶女书刺绣摆件" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
+                        <button data-product="fusion-sculpture" data-price="4.99" data-name="才识书签" class="buy-btn w-full bg-yao-red text-white py-3 rounded-lg font-medium hover:bg-red-700 transition">立即购买</button>
                     </div>
                 </div>
             </div>
-
-            <!-- 购物车/支付状态提示 -->
             <div id="payment-status" class="mt-8 text-center text-sm text-gray-500"></div>
         </div>
     </section>
@@ -247,6 +248,65 @@
                     <h3 class="text-xl font-bold mb-4 text-eco-gold">环保材料</h3>
                     <p class="text-gray-300 text-sm">可降解PLA、再生树脂复合材料，低碳智造工艺流程。</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 征文栏目：盘瓠新绣 ========== -->
+    <section id="story" class="py-24 bg-gradient-to-b from-light-cream to-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-shu-black mb-4">盘瓠新绣 · 征文</h2>
+                <div class="w-20 h-1 bg-yao-red mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">一针一线，将冷的时光绣成热的人间。我们期待您的瑶乡故事。</p>
+            </div>
+
+            <!-- 征文卡片 -->
+            <div class="bg-white rounded-3xl shadow-xl p-6 md:p-10 border border-gray-100 mb-10">
+                <div class="flex justify-center mb-6">
+                    <button id="toggle-story-btn" class="group relative inline-flex items-center gap-3 bg-yao-red text-white px-8 py-4 rounded-full font-medium text-lg shadow-lg hover:bg-red-700 transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        <span id="story-btn-text">展开征文 · 盘瓠新绣</span>
+                        <svg class="w-5 h-5 transition-transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 征文内容区 (默认隐藏) -->
+                <div id="story-content" class="hidden">
+                    <div class="prose prose-lg max-w-none font-serif text-gray-700 leading-relaxed space-y-5 border-t border-gray-200 pt-8">
+                        <h3 class="text-2xl font-bold text-yao-red font-serif text-center">盘瓠新绣</h3>
+                        <p class="first-letter:text-4xl first-letter:font-bold first-letter:text-yao-red first-letter:mr-1">瑶山万古静，云雾是未干的泪。</p>
+                        <p>传说中古时犬戎作乱，帝喾悬榜：能斩敌首者，妻以公主。宫中有神犬，名盘瓠，毛如锦缎，目若寒星，竟衔敌首归来。帝喾悔婚，公主却道：一诺既出，鬼神不可欺。遂随盘瓠入深山，结为夫妇，繁衍瑶家子孙。</p>
+                        <p>千年后，瑶寨只剩老绣娘与孤女阿绣。<br>绣架蒙尘，丝线发脆，人人都往山外走，只剩她们守着半幅残破古绣——绣的是盘瓠踏雾而来，身披八角花图腾。</p>
+                        <p>老妇说：盘王是祖，是神，是不可轻侮的传说。<br>阿绣指尖微凉，望着雾色沉沉的山巅，只觉那神犬寂寞得很。他以性命赴约，换来的是深宫失信、深山孤老。世人敬他畏他，供奉他，却不曾问过，他是否愿做一尊冰冷的神。</p>
+                        <p>夜深，阿绣拈起针线。<br>她不依古法绣威严，不绣征战，不绣高高在上的神明。她绣雾，绣风，绣林间萤火，绣他垂耳低头的温柔。他仍是护佑瑶家的盘王，却也有凡骨情肠。一针一线，皆带凄艳，又藏倔强。</p>
+                        <p>老妇见了，怒而摔框：你亵渎先祖！<br>阿绣轻声道：我不亵渎，我只懂他。他是英雄，也是赴约之人；他是神犬，也曾有痴心。传说若只被供奉，便会死；绣成活色生香，才算真的活下来。</p>
+                        <p>山风穿堂，吹动绣布。<br>那盘瓠似要从布面踏雾而出，眼神不再凛冽，而是温柔苍凉。八角花在他身旁缓缓绽开，不是仪式，是情意。</p>
+                        <p>后来瑶人都说，阿绣绣的不是传说，是盘王的前尘影事。<br>神也好，人也罢，最动人的从不是威仪，是那一诺千金、孤守深山的痴。</p>
+                        <p class="text-right italic">传说本无温度，是一针一线，把冷的时光，绣成了热的人间。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 投稿邮箱区域 -->
+            <div class="text-center bg-yao-red/5 rounded-2xl p-8 border border-yao-red/20 max-w-3xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                    <div class="flex items-center gap-3 text-shu-black">
+                        <svg class="w-8 h-8 text-yao-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="text-lg font-medium">投稿邮箱：</span>
+                    </div>
+                    <a href="mailto:story@yaoxiuxiaoxiang.com" class="text-xl md:text-2xl font-mono font-bold text-yao-red hover:text-red-800 underline underline-offset-4 transition">
+                        story@yaoxiuxiaoxiang.com
+                    </a>
+                </div>
+                <p class="text-gray-600 mt-4 text-sm">期待您关于瑶绣、女书、盘瓠传说或非遗新生的原创故事，我们将择优刊登并赠送文创礼品。</p>
+                <p class="text-gray-500 text-xs mt-2">邮件标题请注明“征文投稿+作品名”，正文附作者简介。</p>
             </div>
         </div>
     </section>
@@ -301,122 +361,126 @@
 
     <!-- JavaScript -->
     <script>
-        // ========== 配置 ==========
-        const SUPABASE_URL = 'https://your-project.supabase.co';     // 替换
-        const SUPABASE_ANON_KEY = 'your-anon-key';                   // 替换
-        const STRIPE_PUBLISHABLE_KEY = 'pk_test_xxxxxxxx';           // 替换
-        
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-        
-        // ========== UI 效果 ==========
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-md');
-                navbar.classList.remove('bg-transparent');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-md');
-                navbar.classList.add('bg-transparent');
-            }
-        });
-
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-                }
-            });
-        });
-
-        // 滚动渐入动画
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-        // ========== 支付功能 ==========
-        const statusDiv = document.getElementById('payment-status');
-        
-        document.querySelectorAll('.buy-btn').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                const product = btn.dataset.product;
-                const price = parseInt(btn.dataset.price);
-                const name = btn.dataset.name;
-                
-                statusDiv.textContent = '正在创建订单...';
-                btn.disabled = true;
-                btn.textContent = '处理中...';
-                
-                try {
-                    // 调用后端创建支付会话
-                    const response = await fetch('/api/create-payment', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ product, price, name })
-                    });
-                    
-                    const session = await response.json();
-                    
-                    if (!response.ok) {
-                        throw new Error(session.error || '创建订单失败');
-                    }
-                    
-                    // 重定向到 Stripe Checkout
-                    const result = await stripe.redirectToCheckout({ sessionId: session.id });
-                    
-                    if (result.error) {
-                        throw new Error(result.error.message);
-                    }
-                } catch (err) {
-                    statusDiv.textContent = '✗ ' + err.message;
-                    btn.disabled = false;
-                    btn.textContent = '立即购买';
-                }
-            });
-        });
-
-        // 检查 URL 参数（支付成功/取消返回）
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            statusDiv.innerHTML = '<span class="text-green-600">✓ 支付成功！我们会尽快发货，感谢您的支持！</span>';
-        } else if (urlParams.get('canceled') === 'true') {
-            statusDiv.innerHTML = '<span class="text-yellow-600">⚠ 支付已取消，如需帮助请联系客服。</span>';
-        }
-
-        // ========== 联系表单 ==========
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const form = e.target;
-            const status = document.getElementById('contact-status');
-            status.textContent = '发送中...';
+        (function() {
+            // ========== 配置 (示例) ==========
+            const SUPABASE_URL = 'https://your-project.supabase.co';
+            const SUPABASE_ANON_KEY = 'your-anon-key';
+            const STRIPE_PUBLISHABLE_KEY = 'pk_test_xxxxxxxx';
             
-            const data = Object.fromEntries(new FormData(form).entries());
+            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
             
-            try {
-                const res = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                const result = await res.json();
-                if (res.ok) {
-                    status.textContent = '✓ 留言已发送，感谢！';
-                    form.reset();
+            // ========== UI 效果 ==========
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white', 'shadow-md');
+                    navbar.classList.remove('bg-transparent');
                 } else {
-                    status.textContent = '✗ ' + (result.error || '发送失败');
+                    navbar.classList.remove('bg-white', 'shadow-md');
+                    navbar.classList.add('bg-transparent');
                 }
-            } catch {
-                status.textContent = '✗ 网络错误';
+            });
+
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if(btn) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
             }
-        });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // 滚动渐入 (预留)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+            // ========== 征文展开/收起 (核心修复) ==========
+            const toggleBtn = document.getElementById('toggle-story-btn');
+            const storyContent = document.getElementById('story-content');
+            const btnText = document.getElementById('story-btn-text');
+
+            if (toggleBtn && storyContent && btnText) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    storyContent.classList.toggle('hidden');
+                    if (storyContent.classList.contains('hidden')) {
+                        btnText.textContent = '展开征文 · 盘瓠新绣';
+                    } else {
+                        btnText.textContent = '收起征文';
+                    }
+                });
+            } else {
+                console.warn('征文元素缺失，请检查ID');
+            }
+
+            // ========== 支付功能 (模拟) ==========
+            const statusDiv = document.getElementById('payment-status');
+            document.querySelectorAll('.buy-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const product = btn.dataset.product;
+                    const price = parseFloat(btn.dataset.price);
+                    const name = btn.dataset.name;
+                    
+                    statusDiv.textContent = '正在创建订单...';
+                    btn.disabled = true;
+                    btn.textContent = '处理中...';
+                    
+                    try {
+                        // 模拟后端请求 (演示用)
+                        // 实际应替换为真实API
+                        // const response = await fetch('/api/create-payment', { ... });
+                        // 此处模拟成功跳转，避免报错
+                        console.log(`模拟支付: ${name} - $${price}`);
+                        statusDiv.innerHTML = '<span class="text-green-600">✓ 演示模式：支付流程已触发 (实际需配置后端)</span>';
+                        btn.disabled = false;
+                        btn.textContent = '立即购买';
+                    } catch (err) {
+                        statusDiv.textContent = '✗ ' + err.message;
+                        btn.disabled = false;
+                        btn.textContent = '立即购买';
+                    }
+                });
+            });
+
+            // URL参数处理
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                statusDiv.innerHTML = '<span class="text-green-600">✓ 支付成功！我们会尽快发货，感谢您的支持！</span>';
+            } else if (urlParams.get('canceled') === 'true') {
+                statusDiv.innerHTML = '<span class="text-yellow-600">⚠ 支付已取消，如需帮助请联系客服。</span>';
+            }
+
+            // ========== 联系表单 ==========
+            const contactForm = document.getElementById('contact-form');
+            if(contactForm) {
+                contactForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const form = e.target;
+                    const status = document.getElementById('contact-status');
+                    status.textContent = '发送中...';
+                    const data = Object.fromEntries(new FormData(form).entries());
+                    try {
+                        // 模拟提交
+                        console.log('留言数据:', data);
+                        status.textContent = '✓ 留言已发送，感谢！(演示模式)';
+                        form.reset();
+                    } catch {
+                        status.textContent = '✗ 网络错误';
+                    }
+                });
+            }
+        })();
     </script>
 </body>
 </html>
